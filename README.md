@@ -34,16 +34,34 @@ A robust backend API for a Learning Management System built using **Node.js**, *
 ---
 📁 Project Structure
 server/
-├── app.js                     # Express app config
-├── server.js                  # Entry point
-├── configs/                   # DB connection
-├── controllers/               # Business logic
-├── middlewares/              # Custom & global middlewares
-├── models/                   # Mongoose schemas
-├── routes/                   # API endpoints
-├── uploads/                  # Temporary file uploads
-├── utils/                    # Utility functions (email, errors)
-└── .env                      # Environment variables
+├── config/               # Database connection and config files
+│   └── db.js
+├── controllers/          # Route logic for user, courses, payments, etc.
+│   ├── user.controller.js
+│   ├── course.controller.js
+│   └── payment.controller.js
+├── middlewares/          # Authentication, error handling, and utility middlewares
+│   ├── auth.middleware.js
+│   ├── error.middleware.js
+│   └── multer.middleware.js
+├── models/               # Mongoose schemas
+│   ├── user.model.js
+│   ├── course.model.js
+│   ├── order.model.js
+│   └── token.model.js
+├── routes/               # API route handlers
+│   ├── user.routes.js
+│   ├── course.routes.js
+│   └── payment.routes.js
+├── utils/                # Utility functions (email, error classes, etc.)
+│   ├── sendEmail.js
+│   ├── AppError.js
+│   └── generateToken.js
+├── uploads/              # Temporary file storage (if applicable)
+├── app.js                # Main Express app configuration
+├── server.js             # Entry point to start the server
+└── .env                  # Environment variables (not committed)
+
 ---
 
 🔌 REST API Overview
