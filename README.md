@@ -32,80 +32,102 @@ A robust backend API for a Learning Management System built using **Node.js**, *
 | Dev Tools      | Nodemon, dotenv             |
 
 ---
-📁 Project Structure
+
+## 📁 Project Structure
+<div>
 server/
-├── config/               # Database connection and config files
-│   └── db.js
-├── controllers/          # Route logic for user, courses, payments, etc.
-│   ├── user.controller.js
-│   ├── course.controller.js
-│   └── payment.controller.js
-├── middlewares/          # Authentication, error handling, and utility middlewares
-│   ├── auth.middleware.js
-│   ├── error.middleware.js
-│   └── multer.middleware.js
-├── models/               # Mongoose schemas
-│   ├── user.model.js
-│   ├── course.model.js
-│   ├── order.model.js
-│   └── token.model.js
-├── routes/               # API route handlers
-│   ├── user.routes.js
-│   ├── course.routes.js
-│   └── payment.routes.js
-├── utils/                # Utility functions (email, error classes, etc.)
-│   ├── sendEmail.js
-│   ├── AppError.js
-│   └── generateToken.js
-├── uploads/              # Temporary file storage (if applicable)
-├── app.js                # Main Express app configuration
-├── server.js             # Entry point to start the server
-└── .env                  # Environment variables (not committed)
+├── config/ # Database connection and config files
+│ └── db.js
+├── controllers/ # Route logic for user, courses, payments, etc.
+│ ├── user.controller.js
+│ ├── course.controller.js
+│ └── payment.controller.js
+├── middlewares/ # Authentication, error handling, and utility middlewares
+│ ├── auth.middleware.js
+│ ├── error.middleware.js
+│ └── multer.middleware.js
+├── models/ # Mongoose schemas
+│ ├── user.model.js
+│ ├── course.model.js
+│ ├── order.model.js
+│ └── token.model.js
+├── routes/ # API route handlers
+│ ├── user.routes.js
+│ ├── course.routes.js
+│ └── payment.routes.js
+├── utils/ # Utility functions (email, error classes, etc.)
+│ ├── sendEmail.js
+│ ├── AppError.js
+│ └── generateToken.js
+├── uploads/ # Temporary file storage (if applicable)
+├── app.js # Main Express app configuration
+├── server.js # Entry point to start the server
+└── .env # Environment variables (not committed)
+</div>
 
 ---
 
-🔌 REST API Overview
-👤 User Routes (/api/v1/user)
-POST /register
+## 🔌 REST API Overview
 
-POST /login
+### 👤 User Routes (`/api/v1/user`)
+| Method | Endpoint             | Description                      |
+|--------|----------------------|----------------------------------|
+| POST   | `/register`          | Register a new user              |
+| POST   | `/login`             | Login existing user              |
+| GET    | `/logout`            | Logout current user              |
+| GET    | `/me`                | Get user profile                 |
+| POST   | `/reset`             | Send password reset link         |
+| POST   | `/reset/:token`      | Reset password with token        |
+| PUT    | `/update/:id`        | Update user profile              |
+| POST   | `/change-password`   | Change current password          |
 
-GET /logout
+---
 
-GET /me
+### 📚 Course Routes (`/api/v1/courses`)
+| Method | Endpoint                    | Description                        |
+|--------|-----------------------------|------------------------------------|
+| GET    | `/`                         | Get all courses                    |
+| GET    | `/:id`                      | Get single course details          |
+| POST   | `/` (Admin)                 | Create a new course                |
+| PUT    | `/:id` (Admin)              | Update a course                    |
+| DELETE | `/:id` (Admin)              | Delete a course                    |
+| POST   | `/:id/lectures` (Admin)     | Add lectures to a course           |
 
-POST /reset
+---
 
-POST /reset/:token
+### 💳 Payment Routes (`/api/v1/payments`)
+| Method | Endpoint          | Description                        |
+|--------|-------------------|------------------------------------|
+| GET    | `/razorpay-key`   | Get Razorpay API key               |
+| POST   | `/subscribe`      | Start a new subscription           |
+| POST   | `/verify`         | Verify Razorpay payment            |
+| POST   | `/unsubscribe`    | Cancel user subscription           |
+| GET    | `/` (Admin)       | Get all payments (admin only)      |
 
-PUT /update/:id
+---
 
-POST /change-password
+### 📩 Miscellaneous (`/api/v1`)
+| Method | Endpoint      | Description                    |
+|--------|---------------|--------------------------------|
+| POST   | `/contact`    | Contact form / support query   |
 
-📚 Course Routes (/api/v1/courses)
-GET /
+---
 
-GET /:id
+## 📦 Setup Instructions
 
-POST / (Admin)
+```bash
+# 1. Clone the repository
+git clone https://github.com/yograj-vijay-yadav/Learning-Management-System.git
 
-PUT /:id (Admin)
+# 2. Navigate to the server directory
+cd Learning-Management-System/server
 
-DELETE /:id (Admin)
+# 3. Install dependencies
+npm install
 
-POST /:id/lectures (Admin)
+# 4. Add your environment variables
+cp .env.example .env
+# Then update the .env file with your credentials
 
-
-💳 Payment Routes (/api/v1/payments)
-GET /razorpay-key
-
-POST /subscribe
-
-POST /verify
-
-POST /unsubscribe
-
-GET / (Admin)
-
-📩 Miscellaneous (/api/v1)
-POST /contact
+# 5. Start the development server
+npm run dev
