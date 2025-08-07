@@ -34,7 +34,7 @@ A robust backend API for a Learning Management System built using **Node.js**, *
 ---
 
 ## 📁 Project Structure
-<div>
+<pre>
 server/
 ├── config/ # Database connection and config files
 │ └── db.js
@@ -63,7 +63,7 @@ server/
 ├── app.js # Main Express app configuration
 ├── server.js # Entry point to start the server
 └── .env # Environment variables (not committed)
-</div>
+</pre>
 
 ---
 
