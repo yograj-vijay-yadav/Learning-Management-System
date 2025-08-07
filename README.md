@@ -44,6 +44,7 @@ server/
 ├── uploads/                  # Temporary file uploads
 ├── utils/                    # Utility functions (email, errors)
 └── .env                      # Environment variables
+---
 
 🔌 REST API Overview
 👤 User Routes (/api/v1/user)
